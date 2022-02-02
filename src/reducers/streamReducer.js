@@ -11,7 +11,9 @@ import streams from "../apis/streams";
 export default (state = {}, action) => {
   switch (action.type) {
     case FETCH_STREAMS:
-      return { ...state, ..._.mapkeys(action.payload, "id") };
+      // console.log(action, "*************");
+      const x = _.mapKeys(action.payload, (item) => item.id);
+      return { ...state, ...x };
     case FETCH_STREAM:
       return { ...streams, [action.payload.id]: action.payload };
     case CREATE_STREAM:
